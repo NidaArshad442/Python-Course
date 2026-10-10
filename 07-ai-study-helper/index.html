@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Study Helper</title>
+<style>
+body { font-family: sans-serif; background: #111; color: white; text-align: center; padding: 30px; }
+input { width: 60%; padding: 12px; border-radius: 8px; border: none; }
+button { padding: 12px 20px; border-radius: 8px; background: #00ff88; border: none; cursor: pointer; font-weight: bold; }
+#answer { margin-top: 20px; background: #222; padding: 20px; border-radius: 10px; text-align: left; }
+</style>
+</head>
+<body>
+<h1>AI Study Helper 🤖</h1>
+<input type="text" id="question" placeholder="Enter your question...">
+<button onclick="askAI()">Ask AI</button>
+<div id="answer">your answer will show here...</div>
+
+<script>
+async function askAI() {
+  let q = document.getElementById("question").value;
+  document.getElementById("answer").innerText = "AI soch raha hai...";
+  let res = await fetch("/ask", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({question: q})
+  });
+  let data = await res.json();
+  document.getElementById("answer").innerText = data.answer;
+}
+</script>
+</body>
+</html>
