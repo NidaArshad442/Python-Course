@@ -1,0 +1,6 @@
+a = input("enter the number 1: ")
+b = input("enter the number 2: ")
+print("numbers: ", a+b )
+a = int(input("enter the number 1: "))
+b = int(input("enter the number 2: "))
+print("numbers: ", a+b )
